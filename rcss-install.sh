@@ -1,0 +1,11 @@
+#!/bin/bash
+# RCSS Autoconfiguration
+# Script created by Haroldo Manoel Dornelas (Chair of LARC 2019 soccer simulation 2D)
+# <gm.haroldo@gmail.com>
+# Install dependency and prerequisites for RoboCup Soccer Simulator
+echo “--------------------------------------------------------------” && echo 'Preparing for RoboCup Soccer Simulator' && echo “--------------------------------------------------------------” && sleep 5 && apt-get update && apt-get remove bison -y && apt-get autoremove -y && apt-get purge rcss* -y && apt-get purge libqt4* -y
+
+echo “--------------------------------------------------------------” && echo 'Installing boring libraries for RoboCup Soccer Simulator' && echo “--------------------------------------------------------------” && sleep 5 && apt-get install autoconf automake bison build-essential flex g++ libaudio-dev libboost-all-dev libfontconfig1-dev  libfreetype6-dev libglib2.0-dev libqt4-dev libqt4-opengl libqt4-opengl-dev libqt4-network libice-dev libpng-dev libsm-dev libtool libxrender-dev libxext-dev libxi-dev libxt-dev libxrender-dev openssh-server openssh-client ruby-full -y
+
+echo “--------------------------------------------------------------” && echo 'Installing  RoboCup Soccer Simulator' && echo “--------------------------------------------------------------” && sleep 5 && wget https://bitbucket.org/larc_cbr_2d_simulation/larc-cbr-2019-simulation-2d/downloads/rcssserver-15.5.0.tar.gz && sleep 5 && wget https://bitbucket.org/larc_cbr_2d_simulation/larc-cbr-2019-simulation-2d/downloads/rcssmonitor-15.2.1.tar.gz && sleep 5 && wget https://bitbucket.org/larc_cbr_2d_simulation/larc-cbr-2019-simulation-2d/downloads/rcsslogplayer-15.2.1.tar.gz && sleep 5  && wget https://bitbucket.org/larc_cbr_2d_simulation/larc-cbr-2019-simulation-2d/downloads/librcsc-4.1.0.tar.gz && sleep 5 && tar xvzf rcssserver-15.5.0.tar.gz && cd rcssserver-15.5.0/ && ./configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/ && make && make install && cd .. && tar xvzf rcssmonitor-15.2.1.tar.gz && cd rcssmonitor-15.2.1/ && ./configure && make install && cd .. &&tar xvzf rcsslogplayer-15.2.1.tar.gz && cd rcsslogplayer-15.2.1/ && ./configure && install && cd .. && tar xvzf librcsc-4.1.0.tar.gz && cd librcsc-4.1.0/ && ./configure && make && make install && cd .. 
+
